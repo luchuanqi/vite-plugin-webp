@@ -36,16 +36,13 @@ const transform = async function (options: UserOptions, params: TransformParams)
   const { formate: { css, template } } = options;
   let { code, id } = params;
   const arr = id.split('?');
-  id = arr[0];
   let cssStr = '';
-  if (arr.length === 1) {
-    const cssReg = new RegExp(`.+(${css.join('|')})$`);
-    const templateReg = new RegExp(`.+(${template.join('|')})$`);
-    if (cssReg.test(id)) {
-      cssStr = await cssTransform(options, { code, id });
-    } else if (templateReg.test(id)) {
-      cssStr = await styleTransform(options, { code, id });
-    }
+  const cssReg = new RegExp(`.+(${css.join('|')})$`);
+  const templateReg = new RegExp(`.+(${template.join('|')})$`);
+  if (cssReg.test(id)) {
+    cssStr = await cssTransform(options, { code, id });
+  } else if (templateReg.test(id)) {
+    cssStr = await styleTransform(options, { code, id });
   }
 
   return {

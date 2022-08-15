@@ -30,7 +30,10 @@ const replaceAll = async (list: StandardItem[], options: UserOptions, { id }: Tr
   const { container } = options;
   let cssStr = '';
   for(let i = 0; i < list.length;) {
-    cssStr += await replaceItem(`${container} ${toCSS(list[i])}`, options, { id });
+    const css = toCSS(list[i]);
+    if (css.startsWith(container) === false) {
+      cssStr += await replaceItem(`${container} ${css}`, options, { id });
+    }
     i++;
   }
   return cssStr;

@@ -1,5 +1,6 @@
 import transform from './core/transform.js';
-import { ignoreFiles } from './core/ignore';
+import { name } from '../package.json';
+import Ignore, { ignoreFiles } from './core/ignore';
 import { webp } from './webp';
 
 const DEFAULT_FORMATE: FormateOptions = {
@@ -29,14 +30,13 @@ export default function main(options: UserOptions = {}) {
   webp(customOpts);
 
   return {
-    name: 'vite-plugins-webp',
+    name,
 
     enforce: 'pre',
     // apply: 'build',
     configResolved(resolvedConfig) {
       customOpts.alias = resolvedConfig?.resolve?.alias || [];
     },
-
     transform(code: string, id: string): Promise<ViteTpl> {
       if (ignoreFiles(id, customOpts) === false) {
         return
