@@ -1,4 +1,6 @@
-# vite-plugin-webp
+# vite-plugin-webp  
+
+a plugin of vite for transform webp  
 
 > 1. vite-plugin-webp will create webp pictures
 > 2. vite-plugin-webp can transform JPEG, PNG, GIF and AVIF images of varying dimensions to `webp`
@@ -17,7 +19,7 @@ export default defineConfig({
     webp({
       include: path.join(__dirname, 'src/pages/index'),
       declude: path.join(__dirname, 'src/pages/index/ignore.vue'),
-      imageType: ['png', 'jpg']
+      imageType: ['.png', '.jpg']
     })
   ]
 });
@@ -33,7 +35,7 @@ export default defineConfig({
     webp({
       include: path.join(__dirname, 'src/pages/index'),
       declude: path.join(__dirname, 'src/pages/index/ignore.vue'),
-      imageType: ['png', 'jpg']
+      imageType: ['.png', '.jpg']
     })
   ]
 });
@@ -63,7 +65,7 @@ export default defineConfig({
   plugins: [
     webp({
       onlyWebp: path.join(__dirname, 'src/pages/index/assets'),
-      imageType: ['png', 'jpg']
+      imageType: ['.png', '.jpg']
     })
   ]
 });

@@ -1,5 +1,6 @@
 import typescript from 'rollup-plugin-typescript2';
 import commonjs from '@rollup/plugin-commonjs';
+import cleanup from 'rollup-plugin-cleanup';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
@@ -15,6 +16,7 @@ const banner =
     ` */`;
 
 const commonPlugins = [
+  cleanup(),
   typescript({
     include: ['src/**/*.ts', 'src/*.ts'],
     tsconfigOverride: {

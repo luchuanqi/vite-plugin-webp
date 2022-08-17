@@ -17,7 +17,7 @@ export default defineConfig({
     webp({
       include: path.join(__dirname, 'src/pages/index'),
       declude: path.join(__dirname, 'src/pages/index/ignore.vue'),
-      imageType: ['png', 'jpg']
+      imageType: ['.png', '.jpg']
     })
   ]
 });
@@ -33,7 +33,7 @@ export default defineConfig({
     webp({
       include: path.join(__dirname, 'src/pages/index'),
       declude: path.join(__dirname, 'src/pages/index/ignore.vue'),
-      imageType: ['png', 'jpg']
+      imageType: ['.png', '.jpg']
     })
   ]
 });
@@ -63,7 +63,7 @@ export default defineConfig({
   plugins: [
     webp({
       onlyWebp: path.join(__dirname, 'src/pages/index/assets'),
-      imageType: ['png', 'jpg']
+      imageType: ['.png', '.jpg']
     })
   ]
 });

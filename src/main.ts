@@ -1,6 +1,6 @@
 import transform from './core/transform.js';
 import { name } from '../package.json';
-import Ignore, { ignoreFiles } from './core/ignore';
+import { ignoreFiles } from './core/ignore';
 import { webp } from './webp';
 
 const DEFAULT_FORMATE: FormateOptions = {
