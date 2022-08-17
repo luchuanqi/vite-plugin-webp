@@ -4,10 +4,9 @@ export declare const imgTypeReg: (type: string[]) => RegExp;
 /**
  * images resize
  * @param type
- * @return } {
+ * @return  {
  *   RegExp.$1: width
  *   RegExp.$2: height
- *   RegExp.$3: type
  * }
  */
-export declare const resizeReg: (type: string[]) => RegExp;
+export declare const resizeReg: RegExp;

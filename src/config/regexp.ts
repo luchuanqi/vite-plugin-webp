@@ -6,12 +6,9 @@ export const imgTypeReg = (type:string[]): RegExp => {
 /**
  * images resize
  * @param type
- * @return } {
+ * @return  {
  *   RegExp.$1: width
  *   RegExp.$2: height
- *   RegExp.$3: type
  * }
  */
-export const resizeReg = (type: string[]): RegExp => {
-  return new RegExp(`\\D+(\\d+)[xX](\\d+)\(${type.join('|')}\)`, 'g');
-}
+export const resizeReg = /\D+(\d+)[xX*](\d+)\.webp$/

@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import sharpWebp from '../webp/sharp';
 import fs from 'fs';
 import { toCSS } from 'cssjson';
 import { cssUrlReg } from '../config/regexp';
@@ -6,24 +6,23 @@ import helper from '../helper';
 
 const replaceItem = (str: string, options: UserOptions, { id }: TransformParams): Promise<string> => {
   return new Promise(resolve => {
-    const { imageType, alias } = options;
-    str.replace(cssUrlReg, (a: string, url: string): any => {
-      url = helper.evalCatch(url);
+    const { alias } = options;
+    cssUrlReg.lastIndex = 0;
+    if (cssUrlReg.test(str)) {
+      const url = helper.evalCatch(RegExp.$1);
       const absPath: string = helper.getAbsoluteDir(id, url, alias);
       const nPath = helper.getWebpPath(absPath);
       const nUrl = helper.getWebpPath(url);
       if (fs.existsSync(nPath)) {
         resolve(str.replace(url, nUrl));
       } else {
-        sharp(absPath).webp().toFile(nPath, (err, info) => {
-          if (err) {
-            resolve('');
-          } else {
-            resolve(str.replace(url, nUrl));
-          }
-        });
+        sharpWebp(absPath, nPath).then(() => {
+          resolve(str.replace(url, nUrl));
+        }).catch(() => {
+          resolve('');
+        })
       }
-    })
+    }
   })
 }
 const replaceAll = async (list: StandardItem[], options: UserOptions, { id }: TransformParams) => {

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import helper from '../helper';
-import sharp from 'sharp';
+import sharpWebp from './sharp';
 function createWebp(dir: string, options: UserOptions) {
   if (fs.existsSync(dir) === false) {
     return;
@@ -14,11 +14,7 @@ function createWebp(dir: string, options: UserOptions) {
       createWebp(abs, options);
     } else if (helper.isTargetImage(abs, imageType)) {
       const nPath = helper.getWebpPath(abs);
-      sharp(abs).webp().toFile(nPath, (err) => {
-        if (err) {
-          return
-        }
-      });
+      sharpWebp(abs, nPath);
     }
   })
 }

@@ -92,3 +92,10 @@ this.url = isSupportWebp() ? loadCom(1) : loadCom(0)
 ```html
 <img :src="url" alt="">
 ```
+
+## Clip 
+
+The image size is 2400x2500, but rendering only need 240x250. 
+
+If the filename is `example240x250.png`, the width of output file is `240` and the height of output file is `250`. 
+
