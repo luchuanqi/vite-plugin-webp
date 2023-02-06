@@ -1,2 +1,2 @@
-declare const sharpWebp: (absPath: string, nPath: string) => Promise<any>;
+declare const sharpWebp: (absPath: string, nPath: string, shartOptions: any) => Promise<any>;
 export default sharpWebp;

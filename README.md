@@ -19,7 +19,11 @@ export default defineConfig({
     webp({
       include: path.join(__dirname, 'src/pages/index'),
       declude: path.join(__dirname, 'src/pages/index/ignore.vue'),
-      imageType: ['.png', '.jpg']
+      imageType: ['.png', '.jpg'],
+      shartOptions: {
+        // https://sharp.pixelplumbing.com/api-output#webp
+        quality: 100
+      } 
     })
   ]
 });
@@ -54,6 +58,30 @@ export default defineConfig({
 .g-webp .standard {
   background: url(./assets/standard.webp);
 }
+```
+4. util.js
+```javascript
+export const isSupportWebp = () => {
+  try {
+    return document.createElement('canvas').toDataURL('image/webp', 0.5).indexOf('data:image/webp') === 0;
+  } catch (err) {
+    return false;
+  }
+};
+
+export const webpClass = (className = 'g-webp') => {
+  if (isSupportWebp) {
+    document.body.classList.add(className);
+  } else {
+    document.body.classList.remove(className);
+  }
+};
+```
+5. main.js
+```javascript
+import { webpClass } from './util.js';
+
+webpClass();
 ```
 
 ## Javascript Example

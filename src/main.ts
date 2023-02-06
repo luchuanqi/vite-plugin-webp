@@ -15,6 +15,7 @@ const DEFAULT_OPTIONS: UserOptions = {
   formate: DEFAULT_FORMATE,
   onlyWebp: '',
   include: '',
+  shartOptions: {},
   declude: 'node_modules'
 };
 export default function main(options: UserOptions = {}) {

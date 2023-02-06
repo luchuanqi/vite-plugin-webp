@@ -17,6 +17,8 @@ interface UserOptions {
   declude?: string | string[],
   onlyWebp?: string | string[],
   alias?: AliasItem[]
+  // https://sharp.pixelplumbing.com/api-output#webp
+  shartOptions?: any
 }
 
 interface TransformParams {
