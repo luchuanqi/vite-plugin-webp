@@ -1,6 +1,6 @@
 import sharp from 'sharp';
 import { resizeReg } from '../config/regexp';
-const sharpWebp = (absPath: string, nPath: string, shartOptions: any): Promise<any> => {
+const sharpWebp = (absPath: string, nPath: string, sharpOptions: any): Promise<any> => {
   let width = null;
   let height = null;
   resizeReg.lastIndex = 0;
@@ -12,7 +12,7 @@ const sharpWebp = (absPath: string, nPath: string, shartOptions: any): Promise<a
     try {
       sharp(absPath)
         .resize({ width, height })
-        .webp(shartOptions || {})
+        .webp(sharpOptions || {})
         .toFile(nPath, (err, info) => {
           if (err) {
             reject(err);

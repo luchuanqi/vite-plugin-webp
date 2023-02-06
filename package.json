@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-webp",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "a plugin of vite for transform webp",
   "main": "lib/vite-plugin-webp.js",
   "module": "lib/vite-plugin-webp.esm.js",

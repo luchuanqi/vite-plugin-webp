@@ -6,7 +6,7 @@ function createWebp(dir: string, options: UserOptions) {
   if (fs.existsSync(dir) === false) {
     return;
   }
-  const { imageType, shartOptions } = options;
+  const { imageType, sharpOptions } = options;
   const files = fs.readdirSync(dir);
   files.forEach((v) => {
     const abs = path.join(dir, v);
@@ -14,7 +14,7 @@ function createWebp(dir: string, options: UserOptions) {
       createWebp(abs, options);
     } else if (helper.isTargetImage(abs, imageType)) {
       const nPath = helper.getWebpPath(abs);
-      sharpWebp(abs, nPath, shartOptions);
+      sharpWebp(abs, nPath, sharpOptions);
     }
   })
 }

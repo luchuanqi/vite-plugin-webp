@@ -6,7 +6,7 @@ import helper from '../helper';
 
 const replaceItem = (str: string, options: UserOptions, { id }: TransformParams): Promise<string> => {
   return new Promise(resolve => {
-    const { alias, shartOptions } = options;
+    const { alias, sharpOptions } = options;
     cssUrlReg.lastIndex = 0;
     if (cssUrlReg.test(str)) {
       const url = helper.evalCatch(RegExp.$1);
@@ -16,7 +16,7 @@ const replaceItem = (str: string, options: UserOptions, { id }: TransformParams)
       if (fs.existsSync(nPath)) {
         resolve(str.replace(url, nUrl));
       } else {
-        sharpWebp(absPath, nPath, shartOptions).then(() => {
+        sharpWebp(absPath, nPath, sharpOptions).then(() => {
           resolve(str.replace(url, nUrl));
         }).catch(() => {
           resolve('');
